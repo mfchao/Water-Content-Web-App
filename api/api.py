@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import torch
 from PIL import Image
-from api.regression import RegressionModel
+from regression import RegressionModel
 from flask_cors import CORS
 from flask_cors import cross_origin
 from torchvision import transforms
