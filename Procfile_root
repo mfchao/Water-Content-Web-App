@@ -1,0 +1,2 @@
+# Use root Python file
+web: python3 railway_app.py 

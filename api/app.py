@@ -5,6 +5,7 @@ from flask_cors import CORS
 from flask_cors import cross_origin
 from torchvision import transforms
 import torch.nn as nn
+import os
 
 
 
@@ -86,4 +87,5 @@ def not_found(e):
     return app.send_static_file('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
