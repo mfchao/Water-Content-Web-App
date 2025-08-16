@@ -1,2 +1,0 @@
-# Fallback Procfile - try this if others don't work
-web: cd api && python3 simple_app.py 
