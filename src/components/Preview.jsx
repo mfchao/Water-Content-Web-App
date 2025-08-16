@@ -10,13 +10,23 @@ function Preview() {
     navigate("/camera");
   };
 
+  function getApiUrl() {
+    if (window.location.hostname === "localhost") {
+      return "http://127.0.0.1:5000";
+    } else {
+      return "https://water-content-web-app.vercel.app";
+    }
+  }
+
   const handlePredict = async () => {
     try {
       const formData = new FormData();
       const blob = await fetch(image).then((res) => res.blob());
       const file = new File([blob], "image.jpg", { type: "image/jpeg" });
       formData.append("image", file);
-      const response = await fetch("http://127.0.0.1:5000/predict", {
+      const apiUrl = getApiUrl();
+
+      const response = await fetch(`${apiUrl}/predict`, {
         method: "POST",
         body: formData,
       });
