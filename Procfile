@@ -1,1 +1,1 @@
-web: cd api && chmod +x start.sh && ./start.sh 
+web: cd api && chmod +x simple_start.sh && ./simple_start.sh 

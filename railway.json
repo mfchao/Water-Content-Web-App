@@ -4,6 +4,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "cd api && chmod +x start.sh && ./start.sh"
+    "startCommand": "cd api && chmod +x simple_start.sh && ./simple_start.sh"
   }
 } 

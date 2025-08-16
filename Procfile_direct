@@ -1,0 +1,2 @@
+# Try direct Python commands
+web: cd api && python3 simple_app.py 
