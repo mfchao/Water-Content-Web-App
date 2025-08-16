@@ -14,7 +14,7 @@ function Preview() {
     if (window.location.hostname === "localhost") {
       return "http://127.0.0.1:5000";
     } else {
-      return "https://water-content-web-app.vercel.app";
+      return ""; // or "/api" if you want to be explicit
     }
   }
 
@@ -26,7 +26,7 @@ function Preview() {
       formData.append("image", file);
       const apiUrl = getApiUrl();
 
-      const response = await fetch(`/api/predict`, {
+      const response = await fetch(`${apiUrl}/api/predict`, {
         method: "POST",
         body: formData,
       });
