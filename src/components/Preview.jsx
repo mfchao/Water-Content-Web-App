@@ -12,25 +12,28 @@ function Preview() {
 
   function getApiUrl() {
     if (window.location.hostname === "localhost") {
-      return "http://127.0.0.1:5000";
+      return "http://127.0.0.1:8000";
     } else {
-      // For Railway deployment, this will be your Railway domain
-      return "https://your-app-name.railway.app";
+      // For Vercel deployment, use the relative API endpoint
+      return "/api";
     }
   }
 
   const handlePredict = async () => {
     try {
-      const formData = new FormData();
-      const blob = await fetch(image).then((res) => res.blob());
-      const file = new File([blob], "image.jpg", { type: "image/jpeg" });
-      formData.append("image", file);
       const apiUrl = getApiUrl();
-
+      
+      // Send the base64 image data directly
       const response = await fetch(`${apiUrl}/predict`, {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image: image
+        }),
       });
+      
       const data = await response.json();
       if (data.error) {
         console.error(data.error);
