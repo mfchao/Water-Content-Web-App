@@ -1,1 +1,1 @@
-web: cd api && chmod +x simple_start.sh && ./simple_start.sh 
+web: python main.py 
