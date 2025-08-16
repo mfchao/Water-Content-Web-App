@@ -7,17 +7,25 @@
     },
     {
       "src": "package.json",
-      "use": "@vercel/static-build"
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/api.py"
+      "dest": "api/api.py"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/build/index.html",
+      "status": 200
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/build/static/$1"
     }
   ]
 }
