@@ -12,7 +12,7 @@ function Preview() {
 
   function getApiUrl() {
     if (window.location.hostname === "localhost") {
-      return "http://127.0.0.1:8000";
+      return "http://127.0.0.1:5000";
     } else {
       // For Vercel deployment, use the relative API endpoint
       return "/api";
@@ -22,19 +22,22 @@ function Preview() {
   const handlePredict = async () => {
     try {
       const apiUrl = getApiUrl();
-      
-      // Send the base64 image data directly
-      const response = await fetch(`${apiUrl}/predict`, {
+
+      // Convert the image URL to a file
+      const response = await fetch(image);
+      const blob = await response.blob();
+      const file = new File([blob], "image.jpg", { type: "image/jpeg" });
+
+      // Send the image file to the API
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const predictResponse = await fetch(`${apiUrl}/predict`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          image: image
-        }),
+        body: formData,
       });
-      
-      const data = await response.json();
+
+      const data = await predictResponse.json();
       if (data.error) {
         console.error(data.error);
       } else {

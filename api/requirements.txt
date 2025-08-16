@@ -1,4 +1,6 @@
-torch
-torchvision
-Pillow
-numpy
+pillow==11.3.0
+numpy==2.3.2
+Flask==3.1.1
+flask-cors==6.0.1
+keras==3.11.2 
+tensorflow==2.20.0
