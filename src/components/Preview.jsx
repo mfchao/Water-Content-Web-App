@@ -14,7 +14,8 @@ function Preview() {
     if (window.location.hostname === "localhost") {
       return "http://127.0.0.1:5000";
     } else {
-      return "/api";
+      // For Railway deployment, this will be your Railway domain
+      return "https://your-app-name.railway.app";
     }
   }
 
