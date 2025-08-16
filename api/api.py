@@ -66,5 +66,9 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
 
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
