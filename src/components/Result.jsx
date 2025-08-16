@@ -12,7 +12,7 @@ function Result() {
   const [showGlass, setShowGlass] = useState(false);
   const [showRestart, setShowRestart] = useState(false);
 
-  let waveHeight = 0;
+  let waveHeight = 0; //height
 
   if (prediction < 9.3) {
     waveHeight = window.innerHeight * 0.35; // minimum height
