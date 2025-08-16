@@ -43,7 +43,7 @@ transform = transforms.Compose([
 
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 def predict():
     try:
         # Get the image file from the request
