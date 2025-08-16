@@ -1,1 +1,1 @@
-web: python api/app.py 
+web: cd api && chmod +x start.sh && ./start.sh 
